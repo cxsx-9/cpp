@@ -8,7 +8,7 @@ int main(void)
 	while (1)
 	{
 		std::cout << "Input command : ";
-		std::cin >> str;
+		std::getline(std::cin, str);
 		if (std::cin.eof())
 		{
 			std::cout << std::endl;
