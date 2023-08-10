@@ -9,7 +9,7 @@ Phonebook::Phonebook(void)
 
 Phonebook::~Phonebook(void)
 {
-	std::cout << "--- goodbye ~ ---\n";
+	std::cout << "\n--- goodbye ~ ---\n";
 }
 
 void	Phonebook::add(void)

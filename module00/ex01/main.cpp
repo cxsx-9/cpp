@@ -5,7 +5,7 @@ int main(void)
 	Phonebook	ph;
 	std::string	str;
 
-	while (1)
+	while (1 && !std::cin.eof())
 	{
 		std::cout << "Input command : ";
 		std::getline(std::cin, str);
