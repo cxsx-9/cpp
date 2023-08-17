@@ -1,9 +1,10 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 
 int    ft_replace(std::string &content, std::string s1, std::string s2, std::string filename)
 {
-    std::ofstream    outfile(filename);
+    std::ofstream    outfile(filename.c_str());
     if (!outfile.is_open())
     {
         std::cout << "Can't open the outfile." <<std::endl;
@@ -36,7 +37,7 @@ int main ( int ac, char **av )
         return (1);
     }
     std::string filename = (std::string) av[1];
-    std::ifstream   infile(filename);
+    std::ifstream   infile(filename.c_str());
     if (!infile.is_open())
     {
         std::cout << "Can't open the file." <<std::endl;
