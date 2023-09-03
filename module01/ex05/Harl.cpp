@@ -24,6 +24,14 @@ void Harl::error( void )
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
+/*
+
+The goal of this exercise is to use pointers to member functions. This is not a
+suggestion. Harl has to complain without using a forest of if/else if/else. It doesn’t think
+twice!
+
+*/
+
 void Harl::complain( std::string level)
 {
 	void (Harl::*ptr[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};

@@ -6,7 +6,7 @@
 class Fixed
 {
 	private:
-		int					num_;
+		int					f_val_;
 		static const int	frac_;
 	public:
 		Fixed( void );
