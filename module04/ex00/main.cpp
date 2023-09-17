@@ -1,15 +1,24 @@
+#include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	const Animal* neutral = new Animal();
+	const Animal* puppy = new Dog();
+	const Animal* kitty = new Cat();
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	std::cout << "Type check : " << neutral->getType() << std::endl;
+	std::cout << "Type check : " << puppy->getType() << std::endl;
+	std::cout << "Type check : " << kitty->getType() << std::endl;
 
-	i->makeSound();//will output the cat sound! 
-	j->makeSound();
-	meta->makeSound();
-			...
-	return 0;
+	neutral->makeSound();
+	puppy->makeSound();
+	kitty->makeSound();
+	
+	delete neutral;
+	delete puppy;
+	delete kitty;
+
+	return (0);
 }

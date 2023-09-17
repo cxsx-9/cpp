@@ -1,8 +1,10 @@
-NAME = Fixed
+NAME = Animal
 CC = c++
 FLAGS = -std=c++98 -Wall -Wextra -Werror
 SRCS = main.cpp \
-		Fixed.cpp
+		Animal.cpp \
+		Cat.cpp \
+		Dog.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
