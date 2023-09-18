@@ -26,6 +26,16 @@ ScavTrap::~ScavTrap( void )
 	std::cout << GRAY << "ScavTrap [" << this->_name << "] has been laid off." << DEFAULT << std::endl;
 }
 
+ScavTrap   &ScavTrap::operator=(const ScavTrap &copy)
+{
+	this->_name = copy._name;
+	this->_hit_point = copy._hit_point;
+	this->_energy_point = copy._energy_point;
+	this->_attack_damage = copy._attack_damage;
+	std::cout << YELLOW << "ScavTrap [" << this->_name << "] was assign by operator." << DEFAULT << std::endl;
+	return (*this);
+}
+
 void ScavTrap::guardGate()
 {
 	if (this->_hit_point)

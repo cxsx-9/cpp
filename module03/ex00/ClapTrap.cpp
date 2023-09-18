@@ -22,6 +22,16 @@ ClapTrap::~ClapTrap( void )
 	std::cout << YELLOW << "ClapTrap [" << this->_name << "] has been laid off." << DEFAULT << std::endl;
 }
 
+ClapTrap   &ClapTrap::operator=(const ClapTrap &copy)
+{
+	this->_name = copy._name;
+	this->_hit_point = copy._hit_point;
+	this->_energy_point = copy._energy_point;
+	this->_attack_damage = copy._attack_damage;
+	std::cout << YELLOW << "ClapTrap [" << this->_name << "] was assign by operator." << DEFAULT << std::endl;
+	return (*this);
+}
+
 // getter
 std::string	ClapTrap::getName( void ) const
 {

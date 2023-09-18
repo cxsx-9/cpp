@@ -31,6 +31,11 @@ std::string const	Animal::getType ( void ) const
 	return (this->_type);
 }
 
+void	Animal::openTheBrain() const
+{
+	std::cout << "There's no Brain here. ;-;" << std::endl;
+}
+
 void	Animal::makeSound() const
 {
 	std::cout << this->getType() << " : Wheeee e e .. . .  " << std::endl;

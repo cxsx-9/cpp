@@ -44,7 +44,6 @@ void	first_meet()
 	ClapTrap z;
 	ClapTrap a("Someone");
 	ClapTrap b(a);
-	ClapTrap c = a;
 }
 
 int	main ()

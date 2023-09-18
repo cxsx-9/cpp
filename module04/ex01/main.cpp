@@ -13,8 +13,8 @@ int main()
 
 	std::cout << "Type check : " << neutral->getType() << std::endl;
 	neutral->makeSound();
-	// std::cout << "Brain check : " << std::endl;
-	// neutral->openTheBrain();
+	std::cout << "Brain check : " << std::endl;
+	neutral->openTheBrain();
 	std::cout << std::endl;
 
 	std::cout << "Type check : " << puppy->getType() << std::endl;

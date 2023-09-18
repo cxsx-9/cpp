@@ -19,7 +19,7 @@ void attack_test()
 	a.attack("J");
 	a.attack("K");
 
-	std::cout << MAGENTA << "Josh is bored. Now, he wanna be a  Guard Gate!\n" << DEFAULT << std::endl;
+	std::cout << MAGENTA << "Josh is bored. Now, he wanna be a Guard Gate!\n" << DEFAULT << std::endl;
 
 	a.guardGate();
 
@@ -74,8 +74,6 @@ void	first_meet()
 	ScavTrap z;
 	std::cout << std::endl;
 	ScavTrap b(z);
-	std::cout << std::endl;
-	ScavTrap c = b;
 	std::cout << std::endl;
 }
 

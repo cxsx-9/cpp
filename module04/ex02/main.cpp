@@ -4,18 +4,10 @@
 
 int main()
 {
-	// const AAnimal* neutral = new AAnimal();
-	// std::cout << std::endl;
 	const AAnimal* puppy = new Dog();
 	std::cout << std::endl;
 	const AAnimal* kitty = new Cat();
 	std::cout << std::endl;
-
-	// std::cout << "Type check : " << neutral->getType() << std::endl;
-	// neutral->makeSound();
-	// std::cout << "Brain check : " << std::endl;
-	// neutral->openTheBrain();
-	// std::cout << std::endl;
 
 	std::cout << "Type check : " << puppy->getType() << std::endl;
 	puppy->makeSound();
@@ -28,9 +20,7 @@ int main()
 	std::cout << "Brain check : " << std::endl;
 	kitty->openTheBrain();
 	std::cout << std::endl;
-	
-	// delete neutral;
-	// std::cout << std::endl;
+
 	delete puppy;
 	std::cout << std::endl;
 	delete kitty;

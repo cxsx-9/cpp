@@ -26,6 +26,16 @@ FragTrap::~FragTrap( void )
 	std::cout << RED << "FragTrap [" << this->_name << "] has been laid off." << DEFAULT << std::endl;
 }
 
+FragTrap   &FragTrap::operator=(const FragTrap &copy)
+{
+	this->_name = copy._name;
+	this->_hit_point = copy._hit_point;
+	this->_energy_point = copy._energy_point;
+	this->_attack_damage = copy._attack_damage;
+	std::cout << YELLOW << "FragTrap [" << this->_name << "] was assign by operator." << DEFAULT << std::endl;
+	return (*this);
+}
+
 void FragTrap::highFivesGuys( void )
 {
 	if (this->_hit_point)
