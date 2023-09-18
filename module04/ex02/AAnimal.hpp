@@ -1,5 +1,5 @@
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
 # include <iostream>
 # include <string>
@@ -9,18 +9,20 @@
 # define YELLOW "\001\033[1;93m\002"
 # define MAGENTA "\001\033[1;95m\002"
 # define GRAY "\001\033[1;90m\002"
-class Animal
+
+class AAnimal
 {
 	protected:
 		std::string	_type;
 	public:
-		Animal( void );
-		virtual ~Animal( void );
-		Animal( const Animal &copy );
-		Animal const		&operator=(const Animal &copy);
+		AAnimal( void );
+		virtual ~AAnimal( void );
+		AAnimal( const AAnimal &copy );
+		AAnimal const		&operator=(const AAnimal &copy);
 		std::string	const	getType( void ) const;
 		void				setType( std::string const type );
-		virtual void		makeSound() const;
+		virtual void		makeSound() const = 0;
+		virtual void		openTheBrain() const = 0;
 };
 
 #endif
