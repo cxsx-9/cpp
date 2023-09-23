@@ -2,7 +2,7 @@
 
 WrongCat::WrongCat ( void )
 {
-	this->setType("AlienCat@#$ ! `  ~");
+	this->setType("AlienCat@#`~");
 	std::cout << GRAY << "WrongCat type " << this->getType() << " has been created!" << DEFAULT << std::endl;
 }
 
