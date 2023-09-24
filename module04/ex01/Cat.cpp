@@ -16,6 +16,7 @@ Cat::~Cat ( void )
 Cat::Cat( const Cat &copy )
 {
 	*this = copy;
+	this->_brain = new std::string(*copy.getBrain());
 }
 
 Cat	const &Cat::operator=(const Cat &copy)
@@ -32,5 +33,10 @@ void	Cat::makeSound() const
 void	Cat::openTheBrain() const
 {
 	this->_brain->ExpressTheIdea();
+}
+
+Brain*	Cat::getBrain() const
+{
+	return (this->_brain);
 }
 

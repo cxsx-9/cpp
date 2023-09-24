@@ -29,6 +29,10 @@ int main()
 	kitty->openTheBrain();
 	std::cout << std::endl;
 	
+	std::cout << "Try to copy the DOG brain to Cat" << std::endl;
+	
+	kitty->
+
 	delete neutral;
 	std::cout << std::endl;
 	delete puppy;
