@@ -15,12 +15,16 @@ Dog::~Dog ( void )
 
 Dog::Dog( const Dog &copy )
 {
-	*this = copy;
+	this->_type = copy.getType() + " (copy)";
+	this->_brain = new Brain(*(copy.getBrain()));
+	std::cout << GRAY << "Dog type " << this->getType() << " has been created! (copy)" << DEFAULT << std::endl;
 }
 
 Dog	const &Dog::operator=(const Dog &copy)
 {
-	this->setType(copy._type);
+	this->_type = copy.getType();
+	delete this->_brain;
+	this->_brain = new Brain(*(copy.getBrain()));
 	return (*this);
 }
 
@@ -32,4 +36,9 @@ void	Dog::makeSound() const
 void	Dog::openTheBrain() const
 {
 	this->_brain->ExpressTheIdea();
+}
+
+Brain	*Dog::getBrain() const
+{
+	return (this->_brain);
 }

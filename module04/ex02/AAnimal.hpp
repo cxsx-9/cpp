@@ -22,7 +22,6 @@ class AAnimal
 		std::string	const	getType( void ) const;
 		void				setType( std::string const type );
 		virtual void		makeSound() const = 0;
-		virtual void		openTheBrain() const = 0;
 };
 
 #endif

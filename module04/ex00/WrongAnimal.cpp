@@ -12,7 +12,8 @@ WrongAnimal::~WrongAnimal ( void )
 
 WrongAnimal::WrongAnimal( const WrongAnimal &copy )
 {
-	*this = copy;
+	this->_type = copy.getType() + " (copy)";
+	std::cout << GRAY << "WrongAnimal type " << this->getType() << " has been created! (copy)" << DEFAULT << std::endl;
 }
 
 WrongAnimal	const &WrongAnimal::operator=(const WrongAnimal &copy)

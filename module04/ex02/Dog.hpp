@@ -1,5 +1,5 @@
 #ifndef DOG_HPP
-# define DOG
+# define DOG_HPP
 
 # include "AAnimal.hpp"
 # include "Brain.hpp"
@@ -14,6 +14,7 @@ class Dog : public AAnimal
 		Dog( const Dog &copy );
 		Dog const		&operator=(const Dog &copy);
 		void	makeSound() const;
+		Brain	*getBrain() const;
 		void	openTheBrain() const;
 };
 

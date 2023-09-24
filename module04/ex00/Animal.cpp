@@ -12,7 +12,8 @@ Animal::~Animal ( void )
 
 Animal::Animal( const Animal &copy )
 {
-	*this = copy;
+	this->_type = copy.getType() + " (copy)";
+	std::cout << GRAY << "Animal type " << this->getType() << " has been created! (copy)" << DEFAULT << std::endl;
 }
 
 Animal	const &Animal::operator=(const Animal &copy)

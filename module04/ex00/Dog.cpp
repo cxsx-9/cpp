@@ -13,7 +13,8 @@ Dog::~Dog ( void )
 
 Dog::Dog( const Dog &copy )
 {
-	*this = copy;
+	this->_type = copy.getType() + " (copy)";
+	std::cout << GRAY << "Dog type " << this->getType() << " has been created! (copy)" << DEFAULT << std::endl;
 }
 
 Dog	const &Dog::operator=(const Dog &copy)

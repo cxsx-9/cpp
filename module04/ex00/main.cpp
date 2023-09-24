@@ -5,7 +5,7 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-int main()
+void case_1()
 {
 	const Animal* neutral = new Animal();
 	const Animal* puppy = new Dog();
@@ -48,6 +48,44 @@ int main()
 
 	delete alien;
 	delete alienCat;
+}
+
+void case_2()
+{
+	Cat luna;
+	Dog sunny;
+
+	std::cout << "Type check : " << luna.getType() << std::endl;
+	luna.makeSound();
+	std::cout << std::endl;
+
+	std::cout << "Type check : " << sunny.getType() << std::endl;
+	sunny.makeSound();
+	std::cout << std::endl;
+
+	std::cout << MAGENTA << "Try to copy the DOG" << DEFAULT << std::endl;
+
+	Dog &sunny_ref = sunny;
+	Dog sunny_puppy(sunny_ref);
+
+	std::cout << "Type check : " << sunny_puppy.getType() << std::endl;
+	sunny_puppy.makeSound();
+	std::cout << std::endl;
+
+	Cat &luna_ref = luna;
+	Cat luna_kitty(luna_ref);
+
+	std::cout << "Type check : " << luna_kitty.getType() << std::endl;
+	luna_kitty.makeSound();
+	std::cout << std::endl;
+}
+
+int main()
+{
+	std::cout << "\n---------------- case 1 -------------------\n"<< std::endl;
+	case_1();
+	std::cout << "\n---------------- case 2 -------------------\n"<< std::endl;
+	case_2();
 
 	return (0);
 }

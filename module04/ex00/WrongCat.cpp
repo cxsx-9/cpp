@@ -13,7 +13,8 @@ WrongCat::~WrongCat ( void )
 
 WrongCat::WrongCat( const WrongCat &copy )
 {
-	*this = copy;
+	this->_type = copy.getType() + " (copy)";
+	std::cout << GRAY << "WrongCat type " << this->getType() << " has been created! (copy)" << DEFAULT << std::endl;
 }
 
 WrongCat	const &WrongCat::operator=(const WrongCat &copy)

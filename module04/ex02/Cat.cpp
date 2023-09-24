@@ -15,12 +15,16 @@ Cat::~Cat ( void )
 
 Cat::Cat( const Cat &copy )
 {
-	*this = copy;
+	this->_type = copy.getType() + " (copy)";
+	this->_brain = new Brain(*(copy.getBrain()));
+	std::cout << GRAY << "Cat type " << this->getType() << " has been created! (copy)" << DEFAULT << std::endl;
 }
 
 Cat	const &Cat::operator=(const Cat &copy)
 {
-	this->setType(copy._type);
+	this->_type = copy.getType();
+	delete this->_brain;
+	this->_brain = new Brain(*(copy.getBrain()));
 	return (*this);
 }
 
@@ -32,5 +36,10 @@ void	Cat::makeSound() const
 void	Cat::openTheBrain() const
 {
 	this->_brain->ExpressTheIdea();
+}
+
+Brain	*Cat::getBrain() const
+{
+	return (this->_brain);
 }
 

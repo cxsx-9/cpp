@@ -13,11 +13,14 @@
 class Brain
 {
 	private:
-		std::string _ideas[100];
+		std::string *_ideas;
 	public:
 		Brain( std::string type );
 		~Brain( void );
-		void	ExpressTheIdea( void ) const;
+		Brain( const Brain &copy );
+		Brain const		&operator=(const Brain &copy);
+		std::string	const	*getIdea( void ) const;
+		void			ExpressTheIdea( void ) const;
 };
 
 #endif
