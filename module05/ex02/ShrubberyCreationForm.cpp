@@ -42,33 +42,27 @@ bool	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	}
 	std::cout << CYAN << "Form : " << this->getName() << " form is executed by " << executor.getName() << "." << DEFAULT << std::endl;
 	std::string filename = this->getTarget() + "_target.txt";
-	std::ofstream   outfile(filename);
-	if (!outfile.is_open())
-	{
-		std::cout << "Can't open the outfile." <<std::endl;
-		return (false);
-	} 
-	outfile << std::endl;
-	outfile <<	"                   * *    " << std::endl;
-	outfile <<	"               *    *  *" << std::endl;
-	outfile <<	"             *  *    *     *  *" << std::endl;
-	outfile <<	"            *     *    *  *    *" << std::endl;
-	outfile <<	"         * *   *    *    *    *   *" << std::endl;
-	outfile <<	"         *     *  *    * * .#  *   *" << std::endl;
-	outfile <<	"         *   *     * #.  .# *   *" << std::endl;
-	outfile <<	"          *     '#.  #: #' * *    *" << std::endl;
-	outfile <<	"         *   * * '#. ##''       *" << std::endl;
-	outfile <<	"           *        '###" << std::endl;
-	outfile <<	"                     ;##" << std::endl;
-	outfile <<	"                     ##." << std::endl;
-	outfile <<	"                     .##:" << std::endl;
-	outfile <<	"                     :###" << std::endl;
-	outfile <<	"                     ;###    |\\__/,|   " << std::endl;
-	outfile <<	"                    ,####. _.|o o  |_  " << std::endl;
-	outfile <<	"         /\\/\\/\\/\\/\\/.######.\\/\\/\\/\\/\\ (`\\" << std::endl;
-	outfile <<	"         |     The Tree of life     |  ) )" << std::endl;
-	outfile <<  "         +  Executed by   -"<< executor.getName() << "-"<< std::endl;
-	outfile <<	"         ----------------------------" << std::endl;
-	outfile.close();
+	FILE* outfile = fopen(filename.c_str(), "w");
+	fprintf(outfile, "\n                   * *    \n");
+	fprintf(outfile, "               *    *  *\n");
+	fprintf(outfile, "             *  *    *     *  *\n");
+	fprintf(outfile, "            *     *    *  *    *\n");
+	fprintf(outfile, "         * *   *    *    *    *   *\n");
+	fprintf(outfile, "         *     *  *    * * .#  *   *\n");
+	fprintf(outfile, "         *   *     * #.  .# *   *\n");
+	fprintf(outfile, "          *     '#.  #: #' * *    *\n");
+	fprintf(outfile, "         *   * * '#. ##''       *\n");
+	fprintf(outfile, "           *        '###\n");
+	fprintf(outfile, "                     ;##\n");
+	fprintf(outfile, "                     ##.\n");
+	fprintf(outfile, "                     .##:\n");
+	fprintf(outfile, "                     :###\n");
+	fprintf(outfile, "                     ;###    |\\__/,|   \n");
+	fprintf(outfile, "                    ,####. _.|o o  |_  \n");
+	fprintf(outfile, "         /\\/\\/\\/\\/\\/.######.\\/\\/\\/\\/\\ (`\\\n");
+	fprintf(outfile, "         |     The Tree of life     |  ) )\n");
+	fprintf(outfile,  "         +  Executed by  -%s-", executor.getName().c_str());
+	fprintf(outfile, "         ----------------------------\n");
+	fclose(outfile);
 	return (true);
 }

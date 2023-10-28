@@ -1,5 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 #include <cstdlib>
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm( void ) : AForm("RobotomyRequestForm", "No target", 72, 45)
 {
@@ -44,9 +45,13 @@ bool	RobotomyRequestForm::execute(Bureaucrat const & executor) const
     std::srand(std::time(0));
     int random_int = rand();
     std::cout << YELLOW << "bzzzzzz bzzzzzz * Drilligng Noise * bzzzzzz bzzzzzz" << DEFAULT << std::endl;
-    if (random_int % 2)
+    if (random_int % 2 == 1)
+    {
         std::cout << GREEN << "Execute " << this->getTarget() << " is SUCCESS!" << DEFAULT << std::endl;
+    }
     else
+    {
         std::cout << RED << "Execute " << this->getTarget() << " is FAILED!" << DEFAULT << std::endl;
-	return (true);
+    }
+    return (true);
 }
