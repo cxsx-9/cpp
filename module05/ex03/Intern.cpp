@@ -69,7 +69,7 @@ AForm* Intern::makeForm(const std::string name, const std::string target)
 			return (form);
 		}
 	}
-	std::cout << RED << "Intern can't create Unkow form." << DEFAULT << std::endl;
+	std::cout << CYAN << "Intern can't create [" << name << "] form." << DEFAULT << std::endl;
 	throw Intern::UnknowFormException();
 	return (form);
 }

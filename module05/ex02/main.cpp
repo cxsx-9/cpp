@@ -86,12 +86,20 @@ void test3()
 		agent.signForm(sheet1);
 		agent.signForm(sheet2);
 		agent.signForm(sheet3);
+	
+		std::cout << YELLOW << "\nCheck Forms information." << DEFAULT << std::endl;
+
 		std::cout << sheet1;
 		std::cout << sheet2;
 		std::cout << sheet3;
+	
+		std::cout << std::endl;
 		executer.executeForm(sheet1);
+		std::cout << std::endl;
 		executer.executeForm(sheet2);
+		std::cout << std::endl;
 		executer.executeForm(sheet3);
+		std::cout << std::endl;
 	}
 	catch (std::exception& e)
 	{

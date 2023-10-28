@@ -29,18 +29,17 @@ void test0()
 void test1()
 {
 	std::cout << MAGENTA << "\n---- TEST 1 ----" << DEFAULT << std::endl;
-	std::cout << YELLOW << "case : Sign and Execute [RobotomyRequestForm] [72:45]" << DEFAULT << std::endl;
+	std::cout << YELLOW << "case : Create Form by Intern [RobotomyRequestForm] [72:45]" << DEFAULT << std::endl;
 	try
 	{
-		Bureaucrat	agent("Leela", 72);
-		Bureaucrat	executer("Bender", 45);
-		RobotomyRequestForm sheet("CAT");
-		std::cout << agent;
-		std::cout << sheet;
-		agent.signForm(sheet);
-		std::cout << executer;
-		std::cout << sheet;
-		executer.executeForm(sheet);
+		Bureaucrat	agent("Phillip", 72);
+		Bureaucrat	executer("Leela", 45);
+		Intern		Newbie;
+		AForm		*sheet = Newbie.makeForm("robotomy request", "Bender");
+
+		agent.signForm(*sheet);
+		executer.executeForm(*sheet);
+		delete sheet;
 	}
 	catch (std::exception& e)
 	{
@@ -51,46 +50,17 @@ void test1()
 void test2()
 {
 	std::cout << MAGENTA << "\n---- TEST 2 ----" << DEFAULT << std::endl;
-	std::cout << YELLOW << "case : Sign and Execute [PresidentialPardonForm] [25:5]" << DEFAULT << std::endl;
+	std::cout << YELLOW << "case : Create Form by Intern [Unknow]" << DEFAULT << std::endl;
 	try
 	{
-		Bureaucrat	agent("Arthur", 25);
-		Bureaucrat	executer("Marvin", 5);
-		PresidentialPardonForm sheet("Earth");
-		std::cout << agent;
-		std::cout << sheet;
-		agent.signForm(sheet);
-		std::cout << executer;
-		std::cout << sheet;
-		executer.executeForm(sheet);
-	}
-	catch (std::exception& e)
-	{
-		std::cout << RED << "Exception : " << e.what() << DEFAULT;
-	}
-}
+		Bureaucrat	agent("Leela", 1);
+		Bureaucrat	executer("Zoidberg", 1);
+		Intern		Newbie;
+		AForm		*sheet = Newbie.makeForm("Unknow", "Home");
 
-void test3()
-{
-	std::cout << MAGENTA << "\n---- TEST 3 ----" << DEFAULT << std::endl;
-	std::cout << YELLOW << "case : Sign and Execute [MIX]" << DEFAULT << std::endl;
-	try
-	{
-		Bureaucrat	agent("Arthur", 25);
-		Bureaucrat	executer("Marvin", 5);
-		ShrubberyCreationForm sheet1("SUN");
-		RobotomyRequestForm sheet2("MOON");
-		PresidentialPardonForm sheet3("EARTH");
-		std::cout << agent;
-		agent.signForm(sheet1);
-		agent.signForm(sheet2);
-		agent.signForm(sheet3);
-		std::cout << sheet1;
-		std::cout << sheet2;
-		std::cout << sheet3;
-		executer.executeForm(sheet1);
-		executer.executeForm(sheet2);
-		executer.executeForm(sheet3);
+		agent.signForm(*sheet);
+		executer.executeForm(*sheet);
+		delete sheet;
 	}
 	catch (std::exception& e)
 	{
@@ -101,7 +71,6 @@ void test3()
 int main()
 {
 	test0();
-	// test1();
-	// test2();
-	// test3();
+	test1();
+	test2();
 }
