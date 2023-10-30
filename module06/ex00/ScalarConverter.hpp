@@ -20,24 +20,23 @@
 
 class ScalarConverter
 {
-	private:
-		std::string		_value;
-		int				_type;
-		int				_prec;
-		int				_intValue;
-		char			_charValue;
-		float			_floatValue;
-		double			_doubleValue;
 	public:
+		static std::string	_value;
+		static int	_type;
+		static int	_prec;
+		static int	_intValue;
+		static char	_charValue;
+		static float	_floatValue;
+		static double	_doubleValue;
+
 		ScalarConverter( void );
-		ScalarConverter(char *value);
 		~ScalarConverter( void );
 		ScalarConverter( const ScalarConverter &copy );
 		ScalarConverter	&operator=(const ScalarConverter &copy);
 
-		void	typeCheck(const std::string &value);
-		void	convertType();
-		void	displayValue();
+		static void	typeCheck(const std::string &value);
+		static void	convert(char *value);
+		static void	displayValue();
 
 		class UnknowTypeException : public std::exception
 		{

@@ -1,12 +1,11 @@
 #include "ScalarConverter.hpp"
-#include <iostream>
 
 int main (int ac, char** av)
 {
     try
     {
         if (ac == 2 && av[1][0])
-            ScalarConverter value(av[1]);
+            ScalarConverter::convert(av[1]); // no need to create instances 
         else
             throw ScalarConverter::BadInputException();
     }

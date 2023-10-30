@@ -1,89 +1,34 @@
 #include "ScalarConverter.hpp"
 
+std::string	ScalarConverter::_value = "";
+int	ScalarConverter::_type = TYPE_EMPTY;
+int	ScalarConverter::_prec = 0;
+int	ScalarConverter::_intValue = 0;
+char	ScalarConverter::_charValue = 0;
+float	ScalarConverter::_floatValue = 0;
+double	ScalarConverter::_doubleValue = 0;
+
 ScalarConverter::ScalarConverter(){}
 
 ScalarConverter::~ScalarConverter(){}
 
-ScalarConverter::ScalarConverter(char *value) : _value(value), _type(TYPE_EMPTY), _prec(0), _intValue(0), _charValue(0), _floatValue(0), _doubleValue(0)
-{
-	typeCheck(value);
-	if (_type == TYPE_UNKNOW)
-		throw ScalarConverter::UnknowTypeException();
-	convertType();
-	displayValue();
-}
-
 ScalarConverter::ScalarConverter(const ScalarConverter &copy)
 {
-	this->_value = copy._value;
-	this->_type = copy._type;
-	this->_prec = copy._prec;
-	this->_intValue = copy._intValue;
-	this->_charValue = copy._charValue;
-	this->_floatValue = copy._floatValue;
-	this->_doubleValue = copy._doubleValue;
+	(void) copy;
 }
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &copy)
 {
-	this->_value = copy._value;
-	this->_type = copy._type;
-	this->_prec = copy._prec;
-	this->_intValue = copy._intValue;
-	this->_charValue = copy._charValue;
-	this->_floatValue = copy._floatValue;
-	this->_doubleValue = copy._doubleValue;
+	(void) copy;
 	return (*this);
 }
 
-void	ScalarConverter::displayValue()
+void	ScalarConverter::convert(char *value)
 {
-	if (_type == TYPE_IMPOSIBLE)
-	{
-		std::cout << "char:	" << "imposible" << std::endl;
-		std::cout << "int:	" << "imposible" << std::endl;
-		if (_value == "nan" || _value == "nanf")
-		{
-			std::cout << "float:	" << "nanf" << std::endl;
-			std::cout << "double:	" << "nan" << std::endl;
-		}
-		else if (_value[0] == '-')
-		{
-			std::cout << "float:	" << "-inff" << std::endl;
-			std::cout << "double:	" << "-inf" << std::endl;
-		}
-		else
-		{
-			std::cout << "float:	" << "inff" << std::endl;
-			std::cout << "double:	" << "inf" << std::endl;
-		}
-		return ;
-	}
-	
-	// char
-	if (std::isprint(_charValue))
-		std::cout << "char:	'" << _charValue << "'" << std::endl;
-	else
-		std::cout << "char:	" << "Non displayable" << std::endl;
-	
-	// int
-	std::cout << "int:	" << _intValue << std::endl;
-
-	// float
-	std::cout << "float:	" << _floatValue;
-	if (!_prec)
-		std::cout << ".0";
-	std::cout  << "f" << std::endl;
-
-	// double
-	std::cout << "double:	" << _doubleValue;
-	if (!_prec)
-		std::cout << ".0";
-	std::cout << std::endl;
-}
-
-void	ScalarConverter::convertType()
-{
+	_value = value;
+	typeCheck(value);
+	if (_type == TYPE_UNKNOW)
+		throw ScalarConverter::UnknowTypeException();
 	switch (_type)
 	{
 	case TYPE_UNKNOW:
@@ -93,14 +38,15 @@ void	ScalarConverter::convertType()
 		_intValue = static_cast<int>(_charValue);
 		_floatValue = static_cast<float>(_charValue);
 		_doubleValue = static_cast<float>(_charValue);
-		break;	
+		break;
 	default:
-		_floatValue = atof(_value.c_str());
-		_charValue = static_cast<unsigned char>(_floatValue);
-		_intValue = static_cast<int>(_floatValue);
-		_doubleValue = static_cast<float>(_floatValue);
+		_doubleValue = atof(_value.c_str());
+		_charValue = static_cast<unsigned char>(_doubleValue);
+		_intValue = static_cast<int>(_doubleValue);
+		_floatValue = static_cast<float>(_doubleValue);
 		break;
 	}
+	displayValue();
 }
 
 void	ScalarConverter::typeCheck(const std::string &value)
@@ -125,16 +71,49 @@ void	ScalarConverter::typeCheck(const std::string &value)
 				else if (*i == 'f' && i + 1 == value.end() && _type == TYPE_DOUBLE)
 					_type = TYPE_FLOAT;
 				else
-				{
 					_type = TYPE_UNKNOW;
-					break;
-				}
 			}
 			i++;
 		}
 		if (_type != TYPE_UNKNOW && _type == TYPE_EMPTY)
 			_type = TYPE_INT;
 	}
+}
+
+void	ScalarConverter::displayValue()
+{
+	if (_type == TYPE_IMPOSIBLE)
+	{
+		std::cout << "char:	" << "imposible" << std::endl;
+		if (_value == "nan" || _value == "nanf")
+		{
+			std::cout << "int:	" << "imposible" << std::endl;
+			std::cout << "float:	" << "nanf" << std::endl;
+			std::cout << "double:	" << "nan" << std::endl;
+		}
+		else if (_value[0] == '-')
+		{
+			std::cout << "int:	" << "-inf" << std::endl;
+			std::cout << "float:	" << "-inff" << std::endl;
+			std::cout << "double:	" << "-inf" << std::endl;
+		}
+		else
+		{
+			std::cout << "int:	" << "inf" << std::endl;
+			std::cout << "float:	" << "inff" << std::endl;
+			std::cout << "double:	" << "inf" << std::endl;
+		}
+		return ;
+	}
+	if (std::isprint(_charValue))
+		std::cout << "char:	'" << _charValue << "'" << std::endl;
+	else
+		std::cout << "char:	" << "Non displayable" << std::endl;
+	std::cout << "int:	" << _intValue << std::endl;
+	if (!_prec)
+		_prec = 1;
+	std::cout << "float:	" << std::fixed << std::setprecision(_prec) << _floatValue << "f" << std::endl;
+	std::cout << "double:	" << std::fixed << std::setprecision(_prec) << _doubleValue << std::endl;
 }
 
 const char* ScalarConverter::UnknowTypeException::what() const throw()
