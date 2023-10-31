@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <iomanip>
+# include <stdlib.h>
 
 # define TYPE_EMPTY		0
 # define TYPE_CHAR		1
