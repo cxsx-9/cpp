@@ -37,7 +37,7 @@ void identify(Base* p) // if OK, it will not return NULL
 		std::cout << "Detect C" << std::endl;
 }
 
-void identify(Base& p) // if not OK, it will throw bad_cast Exception (during at run time)
+void identify(Base& p) // if not OK, it will throw the Exception
 {
 	try
 	{
@@ -45,7 +45,7 @@ void identify(Base& p) // if not OK, it will throw bad_cast Exception (during at
 		(void) d;
 		std::cout << "Detect A" << std::endl;
 	}
-	catch(const std::bad_cast& bc)
+	catch( std::exception &e)
 	{
 		try
 		{
@@ -53,7 +53,7 @@ void identify(Base& p) // if not OK, it will throw bad_cast Exception (during at
 			(void) d;
 			std::cout << "Detect B" << std::endl;
 		}
-		catch(const std::bad_cast& bc)
+		catch( std::exception &e)
 		{
 			try
 			{
@@ -61,7 +61,7 @@ void identify(Base& p) // if not OK, it will throw bad_cast Exception (during at
 				(void) d;
 				std::cout << "Detect C" << std::endl;
 			}
-			catch(const std::bad_cast& bc)
+			catch( std::exception &e)
 			{
 			}
 		}
