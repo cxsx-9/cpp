@@ -118,7 +118,7 @@ void	ScalarConverter::displayValue()
 
 const char* ScalarConverter::UnknowTypeException::what() const throw()
 {
-	return ("Input is Unknow Type, can't convert this value.");
+	return ("Input is Unknown Type, can't convert this value.");
 }
 
 const char* ScalarConverter::BadInputException::what() const throw()

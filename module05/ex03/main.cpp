@@ -50,6 +50,27 @@ void test1()
 void test2()
 {
 	std::cout << MAGENTA << "\n---- TEST 2 ----" << DEFAULT << std::endl;
+	std::cout << YELLOW << "case : Create Form by Intern [PresidentialPardonForm] [25:5]" << DEFAULT << std::endl;
+	try
+	{
+		Bureaucrat	agent("Phillip", 25);
+		Bureaucrat	executer("Leela", 5);
+		Intern		Newbie;
+		AForm		*sheet = Newbie.makeForm("presidential pardon", "Dr.Farnsworth");
+
+		agent.signForm(*sheet);
+		executer.executeForm(*sheet);
+		delete sheet;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << RED << "Exception : " << e.what() << DEFAULT;
+	}
+}
+
+void test3()
+{
+	std::cout << MAGENTA << "\n---- TEST 3 ----" << DEFAULT << std::endl;
 	std::cout << YELLOW << "case : Create Form by Intern [Unknow]" << DEFAULT << std::endl;
 	try
 	{
@@ -73,4 +94,5 @@ int main()
 	test0();
 	test1();
 	test2();
+	test3();
 }

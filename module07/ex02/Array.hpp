@@ -12,11 +12,23 @@
 // • A member function size() that returns the number of elements in the array. This
 // member function takes no parameter and musn’t modify the current instance.
 
+# include <iostream>
+
+# define DEFAULT "\001\033[0;39m\002"
+# define YELLOW "\001\033[1;93m\002"
+# define DEBUG "\001\033[1;93m\002"
+# define RED "\001\033[1;91m\002"
+# define GREEN "\001\033[1;92m\002"
+# define BLUE "\001\033[1;94m\002"
+# define CYAN "\001\033[1;96m\002"
+# define MAGENTA "\001\033[1;95m\002"
+# define GRAY "\001\033[1;90m\002"
+
 template <typename T>
 class Array
 {
 	private:
-		int	_size;
+		unsigned int	_size;
 		T	*_array;
 	public:
 		Array<T>();
@@ -26,6 +38,27 @@ class Array
 		Array<T> &operator=(const Array<T> & copy);
 		T &operator[](const unsigned int index) const;
 		unsigned int size() const;  
+
+		class OutofBoundsException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Index is out of Bounds");
+				}
+		};
+
+		class NullArrayException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Array is Null");
+				}
+		};
 };
+
+template <typename T>
+std::ostream	&operator<<(std::ostream &out, Array<T> const &array);
 
 #endif
