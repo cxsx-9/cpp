@@ -4,6 +4,8 @@
 #include "ctime"
 #include "cstdlib"
 
+#define MAX_VAL 750
+
 void test0()
 {
     std::cout << MAGENTA << "\n---- TEST 0 ----" << DEFAULT << std::endl;
@@ -158,12 +160,60 @@ void test4()
     std::cout << Box2;
 }
 
-
-int main()
+int main(int, char**)
 {
+
     test0();
     test1();
     test2();
     test3();
     test4();
+
+    std::cout << MAGENTA << "\n---- TEST 42 ----" << DEFAULT << std::endl;
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+    }
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
+    try
+    {
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;//
+    return 0;
 }

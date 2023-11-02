@@ -1,11 +1,9 @@
 #include "Array.hpp"
 
 template <typename T>
-Array<T>::Array()
+Array<T>::Array() : _size(0), _array(NULL)
 {
-    _array = NULL;
-    _size = 0;
-    std::cout << GRAY << "Create by default" << DEFAULT << std::endl;
+    std::cout << GRAY << "Create (default)" << DEFAULT << std::endl;
 }
 
 template <typename T>
@@ -20,15 +18,13 @@ Array<T>::Array(unsigned int n)
 {
     _array = new T[n];
     _size = n;
-    std::cout << GRAY << "Create" << DEFAULT << std::endl;
+    std::cout << GRAY << "Create (constructor)" << DEFAULT << std::endl;
 }
 
 template <typename T>
-Array<T> &Array<T>::operator=(const Array<T> & copy)
+Array<T>::Array(const Array<T> & copy)
 {
     _size = copy._size;
-    if (_array)
-        delete[] _array; 
     _array = new T[_size];
 
     if (copy._array)
@@ -36,15 +32,26 @@ Array<T> &Array<T>::operator=(const Array<T> & copy)
             _array[i] = copy._array[i];
     else
         _array = NULL;
-    std::cout << GRAY << "Create a copy" << DEFAULT << std::endl;
-    return (*this);
+    std::cout << GRAY << "Create a copy (constructor)" << DEFAULT << std::endl;
 }
-    // std::cout << DEBUG << "GO 2" << DEFAULT << std::endl;
 
 template <typename T>
-Array<T>::Array(const Array<T> & copy)
+Array<T> &Array<T>::operator=(const Array<T> & copy)
 {
-    *this = copy;
+    _size = copy._size;
+    if (_array)
+    {
+        delete[] _array;
+    }
+    _array = new T[_size];
+
+    if (copy._array)
+        for (unsigned int i = 0; i < _size; i++)
+            _array[i] = copy._array[i];
+    else
+        _array = NULL;
+    std::cout << GRAY << "Create a copy (operator)" << DEFAULT << std::endl;
+    return (*this);
 }
 
 template <typename T>
