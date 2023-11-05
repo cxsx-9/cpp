@@ -54,6 +54,16 @@
         "vector": "cpp",
         "algorithm": "cpp",
         "fstream": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "list": "cpp",
+        "__tree": "cpp",
+        "map": "cpp",
+        "deque": "cpp",
+        "iterator": "cpp",
+        "memory_resource": "cpp",
+        "stack": "cpp",
+        "*.tpp": "cpp",
+        "functional": "cpp",
+        "filesystem": "cpp"
     }
 }

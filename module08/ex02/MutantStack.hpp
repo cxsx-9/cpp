@@ -19,8 +19,8 @@ class MutantStack : public std::stack<T>
     public:
         MutantStack() {}
         ~MutantStack() {}
-        MutantStack<T>(const MutantStack<T> & copy){ *this = copy; }
-        MutantStack<T> &operator=(const MutantStack<T> & copy)
+        MutantStack(const MutantStack<T> & copy){ *this = copy; }
+        MutantStack &operator=(const MutantStack<T> & copy)
         {
             this->c = copy.c;
             return (*this);
