@@ -56,7 +56,7 @@ RPN::RPN(std::string input)
 				if (!std::isdigit(*it))
 					throw RPN::ErrExpression();
 			}
-			int number = std::atoi(token.c_str());
+			int number = atoi(token.c_str());
 			if (number > 10 || number < -10)
 				throw RPN::ErrOutOfRange();
 			_stack.push(number);

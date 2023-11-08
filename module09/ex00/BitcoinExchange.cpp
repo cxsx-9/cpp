@@ -1,9 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-static bool validDate(std::string time);
-static bool validPrice(std::string price);
-static bool validRangePrice(double price);
-
 BitcoinExchange::BitcoinExchange()
 {
 	std::ifstream	dataFile("data.csv");
@@ -42,7 +38,7 @@ BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &copy)
 
 void BitcoinExchange::exchange(std::string fileName)
 {
-	std::ifstream	inputFile(fileName);
+	std::ifstream	inputFile(fileName.c_str());
 	if (!inputFile.is_open())
 		throw BitcoinExchange::ErrFileFailed();
 	std::string rawData;
