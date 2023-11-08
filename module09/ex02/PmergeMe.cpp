@@ -26,7 +26,7 @@ PmergeMe::PmergeMe(std::string input)
 			if (!std::isdigit(*it))
 				throw PmergeMe::ErrInput();
 		}
-		int number = std::atoi(token.c_str());
+		int number = atoi(token.c_str());
 		array.push_back(number);
 		_vec.push_back(number);
 		_list.push_back(number);
@@ -49,11 +49,11 @@ PmergeMe::PmergeMe(std::string input)
 
 	std::cout << "after	: ";
 	display(_vec);
-	// isSort(_vec); // DEBUG
+	isSort(_vec); // DEBUG
 
-	// std::cout << "after	: "; // DEBUG
-	// display(_list);	// DEBUG
-	// isSort(_list); // DEBUG
+	std::cout << "after	: "; // DEBUG
+	display(_list);	// DEBUG
+	isSort(_list); // DEBUG
 
 	double time1 = static_cast<double>(end_time1 - start_time1) / CLOCKS_PER_SEC * 10000000;
 	double time2 = static_cast<double>(end_time2 - start_time2) / CLOCKS_PER_SEC * 10000000;
@@ -144,11 +144,13 @@ void	PmergeMe::insertList(itList begin, itList end)
 	for (itList it = begin; it != end; it++)
 	{
 		itList j = it;
+		itList prev_j = it;
 		std::advance(j, 1);
+		std::advance(prev_j, -1);
 		int tmp = *j;
-		while (j != begin && *(std::prev(j)) > tmp && j != end)
+		while (j != begin && *(prev_j) > tmp && j != end)
 		{
-			*j = *(std::prev(j));
+			*j = *(prev_j);
 			--j;
 		}
 		*j = tmp;
