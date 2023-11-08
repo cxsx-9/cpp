@@ -73,8 +73,8 @@ void	isSort(T array)
 	for (typename T::iterator it = array.begin(); it != array.end(); it++)
 	{
 		typename T::iterator next = it;
-		std::advance(it, 1);
-		if (next != array.end() && *it > *(next))
+		std::advance(next, 1);
+		if (next != array.end() && *it > *next)
 		{
 			std::cout << RED << "not sort ;-;\n" << DEFAULT;
 			return;

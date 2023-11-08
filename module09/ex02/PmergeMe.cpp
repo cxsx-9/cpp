@@ -49,11 +49,11 @@ PmergeMe::PmergeMe(std::string input)
 
 	std::cout << "after	: ";
 	display(_vec);
-	isSort(_vec); // DEBUG
+	// isSort(_vec); // DEBUG
 
-	std::cout << "after	: "; // DEBUG
-	display(_list);	// DEBUG
-	isSort(_list); // DEBUG
+	// std::cout << "after	: "; // DEBUG
+	// display(_list);	// DEBUG
+	// isSort(_list); // DEBUG
 
 	double time1 = static_cast<double>(end_time1 - start_time1) / CLOCKS_PER_SEC * 10000000;
 	double time2 = static_cast<double>(end_time2 - start_time2) / CLOCKS_PER_SEC * 10000000;
@@ -144,12 +144,14 @@ void	PmergeMe::insertList(itList begin, itList end)
 	for (itList it = begin; it != end; it++)
 	{
 		itList j = it;
-		itList prev_j = it;
 		std::advance(j, 1);
-		std::advance(prev_j, -1);
 		int tmp = *j;
+		itList prev_j = j;
+		std::advance(prev_j, -1);
 		while (j != begin && *(prev_j) > tmp && j != end)
 		{
+			prev_j = j;
+			std::advance(prev_j, -1);
 			*j = *(prev_j);
 			--j;
 		}
