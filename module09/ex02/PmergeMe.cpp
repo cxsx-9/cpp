@@ -78,7 +78,8 @@ void	PmergeMe::insertVec(itVec begin, itVec end)
 {
 	for (itVec it = begin; it != end; it++)
 	{
-		itVec j = std::next(it);
+		itVec j = it;
+		std::advance(j, 1);
 		int tmp = *j;
 		while (j != begin && *(j - 1) > tmp && j != end)
 		{
@@ -142,7 +143,8 @@ void	PmergeMe::insertList(itList begin, itList end)
 {
 	for (itList it = begin; it != end; it++)
 	{
-		itList j = std::next(it);
+		itList j = it;
+		std::advance(j, 1);
 		int tmp = *j;
 		while (j != begin && *(std::prev(j)) > tmp && j != end)
 		{
