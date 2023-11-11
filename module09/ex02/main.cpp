@@ -4,9 +4,9 @@ int main(int ac, char **av)
 {
     try
     {
-        if (ac != 2)
+        if (ac == 1)
             throw PmergeMe::ErrInput();
-        PmergeMe((std::string)av[1]);
+        PmergeMe pme(ac, av);
     }
     catch(const std::exception& e)
     {

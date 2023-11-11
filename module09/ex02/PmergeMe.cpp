@@ -13,13 +13,13 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &copy)
 	return (*this);
 }
 
-PmergeMe::PmergeMe(std::string input)
+PmergeMe::PmergeMe(int ac, char **av)
 {  
-	std::istringstream	line(input);
 	std::string			token;
 	std::vector<int>	array;
-	while (line >> token)
+	for (int i = 1; i < ac; i++)
 	{
+		token = av[i];
 		std::string::const_iterator it = token.begin();
 		for (; it != token.end(); it++)
 		{

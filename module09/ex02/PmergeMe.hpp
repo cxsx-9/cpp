@@ -30,7 +30,7 @@ class PmergeMe
 		~PmergeMe();
 		PmergeMe(const PmergeMe &copy);
 		PmergeMe &operator=(const PmergeMe &copy);
-		PmergeMe(std::string input);
+		PmergeMe(int ac, char **av);
 
 		bool	isDup(std::vector<int> array);
 
@@ -85,6 +85,7 @@ void	isSort(T array)
 
 /*
 
+Random nmuber : https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php
 
 Merge Insertion Sort / Ford-Johnson Algorithm
 https://github.com/decidedlyso/merge-insertion-sort/blob/master/README.md

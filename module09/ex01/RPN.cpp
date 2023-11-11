@@ -48,18 +48,14 @@ RPN::RPN(std::string input)
 	{
 		if (!isOperand(token))
 		{
-			std::string::const_iterator it = token.begin();
-			for (; it != token.end(); it++)
-			{
-				if (token[0] == '-')
-					it++;
-				if (!std::isdigit(*it))
-					throw RPN::ErrExpression();
-			}
-			int number = std::atoi(token.c_str());
-			if (number > 10 || number < -10)
+			size_t size = 1;
+			if (token[0] == '-')
+				size++;
+			if (token.size() > size)
 				throw RPN::ErrOutOfRange();
-			_stack.push(number);
+			if (!std::isdigit(token[size - 1]))
+				throw RPN::ErrExpression();
+			_stack.push(std::atoi(token.c_str()));
 		}
 		else
 		{

@@ -1,9 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-static bool validDate(std::string time);
-static bool validPrice(std::string price);
-static bool validRangePrice(double price);
-
 BitcoinExchange::BitcoinExchange()
 {
 	std::ifstream	dataFile("data.csv");
@@ -65,13 +61,18 @@ void BitcoinExchange::exchange(std::string fileName)
 			continue;
 
 		std::multimap<std::string, double>::const_iterator it_dataBase = _dataBase.begin();
-		for (;it_dataBase != _dataBase.end() && it_dataBase->first < date; it_dataBase++) {}
 		if (it_dataBase->first > date)
+		{
+			std::cout << "Error: date is out range => " << date << std::endl;
+			continue;
+		}
+		for (;it_dataBase != _dataBase.end() && it_dataBase->first < date; it_dataBase++) {}
+		if (it_dataBase == _dataBase.end() || it_dataBase->first > date)
 			it_dataBase--;
 		std::cout << date << " => " << value << " = " << it_dataBase->second * value << std::endl;
 
 		//debug
-		// std::cout << "get:" << it_dataBase->first << "    " << it_dataBase->second << " * " << value << " = " << it_dataBase->second * value << "\n\n"; // debug
+		// std::cout << "2get:" << it_dataBase->first << "    " << it_dataBase->second << " * " << value << " = " << it_dataBase->second * value << "\n\n"; // debug
 	}
 	inputFile.close();
 }
@@ -87,8 +88,23 @@ bool BitcoinExchange::validDate(std::string time)
 			std::istringstream dateStream(time.substr(8, 2));
 			int year, day, month;
 			if (yearStream >> year && dateStream >> day && monthStream >> month)
-				if (year >= 0 && day >= 1 && day <= 31 && month >= 1 && month <= 12)
-					return (true);
+			{
+				if (year >= 0 && day >= 1 && month >= 1 && month <= 12)
+				{
+					if (month == 2)
+					{
+						bool isLeapYear = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+						if (isLeapYear && day <= 29)
+							return (true);
+						if (!isLeapYear && day <= 28)
+							return (true);
+					}
+					else if ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30)
+						return (true);
+					else if (day <= 31)
+						return (true);
+				}
+			}
 		}
 	}
 	std::cout << "Error: bad input => " << time << std::endl;

@@ -4,6 +4,7 @@
 # include <iostream>
 # include <fstream>
 # include <sstream>
+# include <iomanip>
 # include <map>
 # include <stdlib.h>
 
@@ -17,8 +18,8 @@ class BitcoinExchange
         BitcoinExchange( const BitcoinExchange &copy );
 		BitcoinExchange	&operator=(const BitcoinExchange &copy);
 
-        void exchange(std::string fileName);
-        bool validDate(std::string time);
+        void exchange(std::string fileName); // fix here
+        bool validDate(std::string time); // fix here
         bool validPrice(std::string price);
         bool validRangePrice(double price);
     
