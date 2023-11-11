@@ -85,7 +85,7 @@ void	isSort(T array)
 
 /*
 
-Random nmuber : https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php
+Random number : https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php
 
 Merge Insertion Sort / Ford-Johnson Algorithm
 https://github.com/decidedlyso/merge-insertion-sort/blob/master/README.md
